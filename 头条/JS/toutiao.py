@@ -4,22 +4,6 @@ import requests
 import execjs
 
 
-proxyHost = "http-pro.abuyun.com"
-proxyPort = "9010"
-proxyUser = 'H5686N8652T8UK8P'
-proxyPass = '02F2327FEFDD0428'
-proxyMeta = "http://%(user)s:%(pass)s@%(host)s:%(port)s" % {
-    "host": proxyHost,
-    "port": proxyPort,
-    "user": proxyUser,
-    "pass": proxyPass,
-}
-
-proxies = {
-    "http": proxyMeta,
-    "https": proxyMeta,
-}
-
 def get_sign(token, max_behot_time):
     if max_behot_time == 0:
         param = '/api/pc/feed/?category=pc_profile_article&utm_source=toutiao&visit_user_token={}&max_behot_time=0'.format(
