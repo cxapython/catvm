@@ -48,7 +48,7 @@ def job():
     date = datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d-%H-%M-%S')
     path = '{}'.format(date)
     os.mkdir(path)
-    conn = pymysql.connect(host="10.20.31.205", user="root", password="123456", port=3333, database="internal_dp",
+    conn = pymysql.connect(host="xx.xx.xx.xx", user="root", password="123456", port=3333, database="internal_dp",
                            charset="utf8")
     cursor = conn.cursor()
     run(cursor, browser, conn, path)
