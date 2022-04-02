@@ -18,9 +18,9 @@ NEWSPIDER_MODULE = 'shannon_spider.spiders'
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # DB config
-# CRAWLED_DATABASE = 'mysql+pymysql://root:admin123@localhost:3306/shannon?charset=utf8'
+# CRAWLED_DATABASE = ''
 #
-CRAWLED_DATABASE = 'mysql+pymysql://crawled:BwZsp2rWuQzF61iM4t#B@aws-nx-mysql-data-platform.cluster-c2j9mqdjkqyt.rds.cn-northwest-1.amazonaws.com.cn:3306/crawled?charset=utf8'
+CRAWLED_DATABASE = ''
 # ORIGIN_DATABASE = 'mysql+pymysql://{{ DB_USER }}:{{ DB_PASSWORD }}@{{ DB_HOST }}/{{ DB_NAME }}?charset=utf8'
 ECHO_SQL = False
 
