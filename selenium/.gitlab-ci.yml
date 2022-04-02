@@ -1,0 +1,28 @@
+image:
+  harbor.shannonai.com/inf/shannon-spider-ci:v1.0.1
+
+stages:
+  - deploy
+
+variables:
+  SERVICES: 'sk.shannonai.com'
+  SERVICES_PORT: '443'
+  dingtalk_robot_error: 'https://oapi.dingtalk.com/robot/send?access_token=40f85c1c7d6540dbcbd061bb2cfe85da65253fefb298f1a4bbe16f2e376c1f26'
+
+deploy_job:
+  stage: deploy
+  only:
+    - master
+  script:
+    - cd shannon_spider/conf
+    - cp user_agent-template.py user_agent.py
+    - cp proxy-template.py proxy.py
+    - cd ..
+    - cp settings-template.py settings.py
+    - sed -i "s%CRAWLED_DATABASE = .*$%CRAWLED_DATABASE = $CRAWLED_DATABASE%g" settings.py
+    - sed -i "s%ORIGIN_DATABASE = .*$%ORIGIN_DATABASE = $ORIGIN_DATABASE%g" settings.py
+    - sed -i "s%ROBOT_SPIDER = .*$%ROBOT_SPIDER = \'$dingtalk_robot_error\'%g" settings.py
+    - cd ..
+    - cp deploy_aws.py deploy_aws_run.py
+    - sed -i "s%services = \[.*$%services = [(\'$SERVICES\', \'$SERVICES_PORT\')]%g" deploy_aws_run.py
+    - python deploy_aws_run.py

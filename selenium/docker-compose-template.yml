@@ -1,0 +1,13 @@
+version: '3'
+services:
+    scrapyd:
+        image: {{ SCRAPYD_IMAGE }}
+        restart: always
+        environment:
+            - HOST_IP=${HOST_IP}
+            - SERVICE_6800_NAME=scrapyd
+            - SERVICE_6800_TAGS=traefik_inner.enable=true
+            - SERVICE_6800_CHECK_HTTP=/daemonstatus.json
+            - SERVICE_6800_CHECK_INTERVAL=30s
+        ports:
+            - "6800"

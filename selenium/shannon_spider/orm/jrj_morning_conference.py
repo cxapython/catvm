@@ -1,0 +1,45 @@
+# coding: utf-8
+
+from sqlalchemy import Column, String, Numeric, Date, Time, Integer, TEXT, BOOLEAN
+from shannon_spider.db import CommonFieldMixin, ItemBaseModel
+
+
+class JRJMorningInfoItem(CommonFieldMixin, ItemBaseModel):
+    """金融界"""
+
+    __tablename__ = 'jrj_morning_info'
+
+    desc = '金融界券商晨会'
+    # 发布日期
+    DATETIME = Column(Date, doc={'zh', '发布日期'})
+
+    # 研报标题
+    TITLE = Column(TEXT, doc={'zh', '研报标题'})
+
+    # 股票名称
+    COMPANY_NAME = Column(String(40), doc={'zh', '股票名称'})
+
+    # 研究机构
+    INSTITUTION_NAME = Column(String(40), doc={'zh', '研究机构'})
+
+    # 分析师
+    AUTHOR = Column(String(20), doc={'zh', '分析师'})
+
+    # 机构评级
+    INVESTMENT_RATING = Column(String(20), doc={'zh', '机构评级'})
+
+    # 晨会报告
+    CATEGORY = Column(String(40), doc={'zh', '晨会报告'})
+
+    # 行业名称
+    INDUSTRY_NAME = Column(String(40), doc={'zh', '行业名称'})
+
+    # PDF_URL
+    PDF_URL = Column(String(200), doc={'zh', 'PDF_URL'})
+
+    # 存放路径
+    PDF_PATH = Column(String(200), doc={'zh', '存放路径'})
+
+    # 是否保存
+    IS_DOWNLOADED = Column(BOOLEAN, doc={'zh', '是否存储'})
+
